@@ -41,7 +41,7 @@ export default function FeaturedDrop() {
         <h2 className=" text-5xl md:text-7xl font-bold tracking-tight leading-tight !font-anton">
           This Season’s Drop
           <br />
-          <span className="italic text-red-500 bg-white pr-[1rem]">The “Unfiltered” Series</span>
+          <span className="italic text-[#FD5E53] bg-white pr-[1rem]">The “Unfiltered” Series</span>
         </h2>
 
        

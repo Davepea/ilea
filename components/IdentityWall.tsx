@@ -121,11 +121,11 @@ export default function IdentityWall() {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 bg-neutral-100" id="identity-wall">
+    <section ref={sectionRef} className="py-20 px-4 bg-[#3f4147]" id="identity-wall">
       <div className="">
         <div className="flex justify-between md:items-end md:flex-row flex-col text-start md:px-16 md:pb-0">
-          <AnimatedTitle2 className="font-bold tracking-tight !text-[#FD5E53] md:!pb-10 !pb-0" text='Real Ones. Real Looks.'/>
-          <p className=" text-lg text-gray-600 mb-10">Styled by You, Not a Stylist.</p>
+          <AnimatedTitle2 className="font-bold tracking-tight md:!pb-10 !pb-0" text='Real Ones. Real Looks.'/>
+          <p className=" text-lg text-gray-200 mb-10">Styled by You, Not a Stylist.</p>
         </div>
 
         

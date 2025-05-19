@@ -5,6 +5,7 @@ import IdentityWall from "@/components/IdentityWall";
 import JoinTheMovement from "@/components/JoinTheMovement";
 import Image from "next/image";
 import ShopByVibe from "@/components/ShopByVibe";
+import Marquee from "@/components/Marquee";
 
 
 export default async function Home() {
@@ -71,6 +72,7 @@ export default async function Home() {
      <ShopByVibe/>
     </section>
     <JoinTheMovement />
+    <Marquee/>
 
 
  
