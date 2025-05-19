@@ -6,8 +6,8 @@ import gsap from 'gsap';
 
 import { ScrollTrigger } from 'gsap/all';
 import Link from 'next/link';
-import Button from '@/components/Button';
-import { HiArrowLongRight } from 'react-icons/hi2';
+// import Button from '@/components/Button';
+// import { HiArrowLongRight } from 'react-icons/hi2';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -74,12 +74,20 @@ const Hero = () => {
                 onLoadedData={handleVideoLoad}
               />
     </div>
+    {/* <div className='bg-[#00000024] absolute top-0 bottom-0 right-0 left-0 z-10 '/> */}
+  
     <div className='mt-24 px-5 sm:px-10'>
       <h1 className=' z-20 relative header' >Wear Your <br/><span className=' '> Truth.</span></h1>
-
-      <Link href="#" >
+        <Link
+          href="/product" 
+          className="inline-block mt-10 px-6 py-3 relative z-20 text-white bg-black rounded-full hover:bg-gray-800 transition"
+        >
+          Discover Your Style →
+        </Link>
+      {/* <Link href="#" >
        <Button id='product-button' title='Discover Your Style' rightIcon={<HiArrowLongRight />} containerClass=' md:flex flex items-center justify-center gap-5 mt-10 ml-3 text-[20px]' leftIcon={undefined}/>
-      </Link>
+      </Link> */}
+      
     </div>
     </section>
     </>

@@ -122,10 +122,10 @@ export default function IdentityWall() {
 
   return (
     <section ref={sectionRef} className="py-20 px-4 bg-neutral-100" id="identity-wall">
-      <div className="max-w-7xl mx-auto text-center">
-        <div className="flex justify-between items-center text-start md:px-16">
-          <AnimatedTitle2 className="font-bold tracking-tight !text-[#FD5E53]" text='Real Ones. Real Looks.'/>
-          <p className=" text-lg text-gray-600">Styled by You, Not a Stylist.</p>
+      <div className="">
+        <div className="flex justify-between md:items-end md:flex-row flex-col text-start md:px-16 md:pb-0">
+          <AnimatedTitle2 className="font-bold tracking-tight !text-[#FD5E53] md:!pb-10 !pb-0" text='Real Ones. Real Looks.'/>
+          <p className=" text-lg text-gray-600 mb-10">Styled by You, Not a Stylist.</p>
         </div>
 
         
@@ -152,7 +152,8 @@ export default function IdentityWall() {
         </div>
 
         {/* Navigation buttons for manual scrolling */}
-        <div className="flex justify-center gap-2 mt-4">
+      <div className='flex justify-between items-center flex-col md:flex-row md:px-20'>
+          <div className="flex justify-center gap-2 mt-4">
           <button 
             className="p-2 bg-black rounded-full text-white hover:bg-gray-800 transition"
             onClick={(e) => handleScroll('left', e)}
@@ -177,6 +178,7 @@ export default function IdentityWall() {
         >
           Join the Identity Wall →
         </Link>
+      </div>
       </div>
     </section>
   );

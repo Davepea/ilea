@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function FeaturedDrop() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,12 +21,12 @@ export default function FeaturedDrop() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100vh] w-full overflow-hidden bg-black text-white"
+      className="relative md:h-[100vh] h-[70vh] w-full overflow-hidden bg-black text-white flex flex-col rounded-bl-[10px] rounded-tl-[10px]"
     >
       {/* Background image */}
       <div className="absolute top-0 left-0 right-0 bottom-0 z-0">
         <Image
-          src="https://images.pexels.com/photos/27960326/pexels-photo-27960326/free-photo-of-two-people-in-black-leather-jackets-and-pants.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" // Replace with real image
+          src="https://i.pinimg.com/736x/23/06/c2/2306c2437a0e034b4a68c59e02244719.jpg" // Replace with real image
           alt="Unfiltered Collection"
           fill
           className="object-cover opacity-80"
@@ -33,29 +34,33 @@ export default function FeaturedDrop() {
         />
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-70 z-10" />
+
 
       {/* Content */}
-      <div className="relative z-20 h-full flex flex-col justify-end p-10 md:p-20 max-w-5xl">
-        <h2 className="headline text-5xl md:text-6xl font-bold tracking-tight leading-tight">
-          This Season’s Drop:
+      <div className="relative z-20 h-full flex flex-col  py-10 px-6 md:p-10 max-w-5xl">
+        <h2 className=" text-5xl md:text-7xl font-bold tracking-tight leading-tight !font-anton">
+          This Season’s Drop
           <br />
-          <span className="italic text-red-500">The “Unfiltered” Series</span>
+          <span className="italic text-red-500 bg-white pr-[1rem]">The “Unfiltered” Series</span>
         </h2>
 
-        <p className="subtext mt-6 text-lg md:text-xl text-gray-200 max-w-xl">
-          Raw textures. Urban silhouettes. Bold expression. This collection was made for walking the
-          line between rebel and royalty.
-        </p>
+       
 
-        <a
+        <Link
           href="/collection/unfiltered"
           className=" mt-8 inline-block w-fit bg-white text-black px-6 py-3 text-sm md:text-base rounded-full  hover:bg-gray-200 transition relative !z-10"
         >
           Shop the Drop →
-        </a>
+        </Link>
+      </div>
+
+      <div className='md:p-10 p-6'>
+         <p className="subtext text-gray-200 max-w-xl  text-xs">
+          Raw textures. Urban silhouettes. Bold expression. This collection was made for walking the
+          line between rebel and royalty.
+        </p>
       </div>
     </section>
   );
 }
+

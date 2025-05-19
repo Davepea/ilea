@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import Link from 'next/link';
 
 export default function JoinTheMovement() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -17,11 +18,11 @@ export default function JoinTheMovement() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full bg-black text-white py-8 pl-[6.2vw] md:h-screen">
+    <section ref={sectionRef} className="w-full bg-black text-white py-20 md:pb-8 pb-20 px-[6.2vw] md:h-screen">
           <div  className='absolute absolute-center z-10  top-0 left-0 right-0 bottom-0 object-cover object-center' >
             <video
                         
-                        src="/videos/hero5.mp4"
+                        src="/videos/new.mp4"
                         autoPlay
                         loop
                         muted
@@ -30,34 +31,24 @@ export default function JoinTheMovement() {
                         
                     />
             </div>
-     <div className='flex justify-between h-full gap-20'>
-        <div className=" space-y-6 z-10 relative self-start flex flex-col justify-between md:h-full">
-          <h2 className="text-4xl md:text-5xl font-bold header !text-white">Ready to Wear Who You Are?</h2>
-          <div>
-              <a
-              href="/collection"
-              className=" text-white font-semibold py-3  rounded-2xl hover:bg-white hover:text-black transition"
-            >
-              Browse the Collection →
-            </a>
+          <div className='md:flex md:justify-between grid grid-cols-1 gap-40 md:h-full md:gap-5  h-[70vh]'>
+              <div className=" z-10 relative self-start max-w-[750px] ">
+                <h2 className="text-4xl md:text-5xl font-bold header2 !text-white">Ready to Wear Who You Are?</h2>
+            
+              
+              </div>
+              <div className='z-10   self-end text-end '>
+                  <div>
+                    <Link
+                    href="/collection"
+                    className=" text-white font-semibold py-3  rounded-2xl hover:bg-white hover:text-black transition"
+                  >
+                    Browse the Collection →
+                  </Link>
+                </div>
+               
+              </div>
           </div>
-        
-        </div>
-        <div className='relative z-10  max-w-[300px] self-end'>
-          <p className=" text-gray-300">
-            This isn’t just fashion—it’s identity. Join the ones who wear their truth like armor.
-          </p>
-          <div className=" mt-10  ">
-            <a
-              href="/start"
-              className="px-6 py-3 text-black bg-white rounded-full hover:bg-gray-800 transition"
-            >
-              Start Expressing →
-            </a>
-          
-          </div>
-        </div>
-     </div>
     </section>
   );
 }

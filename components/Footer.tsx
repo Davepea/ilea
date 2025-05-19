@@ -1,120 +1,122 @@
-import React from 'react'
-import Image from 'next/image'
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Footer = () => {
-  return (
-    <>
-    <section className='md:px-20 py-30 bg-[#242424]'>
-       <div className='grid md:grid-cols-5 grid-cols-1 p-10 py-12 bg-[#101010]'>
-        <div className='col-span-1 bg-white'>
-          <Image
-            src="/img/Looking.jpeg"
-            alt="email"
-            height={400}
-            width={230}
-            className='h-full w-full object-cover'
-          />
-        </div>
-         <div className='bg-[#101010] text-center p-10 flex flex-col gap-14 col-span-3'>
-            <div>
-                <h1 className='text-6xl pb-4'>
-                    Stay Raw. Stay First.
-                </h1>
-                <p className='max-w-[450px] m-auto'>
-                Get early access to drops, behind-the-scenes stories, and exclusive identity content.
-                </p>
-            </div>
-            <form action="">
-                <input type="text" className='bg-white' />
-                <button type="submit">Join the List →</button>
-            </form>
-        </div>
-        <div className=' col-span-1 bg-white md:block hidden'>
-           <Image
-            src="/img/Looking2.jpeg"
-            alt="email"
-            height={400}
-            width={230}
-             className='h-full w-full object-cover'
-          />
-        </div>
-       </div>
-    </section>
-    <footer className='bg-[#101010] p-20 relative'>
-      <div className='absolute bottom-0 right-0 z-20'>
-            <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'
-                fill='currentColor'
-                className='size-8 text-[#fff]'
-              ></svg>
-      </div>
-      <div className='grid grid-cols-5'>
-        <div className='col-span-2'>
-          <div>
-            <div>
-               <div className='flex gap-[2px] items-center'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'
-                fill='currentColor'
-                className='size-8 text-[#fff]'
-              >
-                <path d='M15 3.75H9v16.5h6V3.75ZM16.5 20.25h3.375c1.035 0 1.875-.84 1.875-1.875V5.625c0-1.036-.84-1.875-1.875-1.875H16.5v16.5ZM4.125 3.75H7.5v16.5H4.125a1.875 1.875 0 0 1-1.875-1.875V5.625c0-1.036.84-1.875 1.875-1.875Z' />
-              </svg>
-              <div className='md:flex hidden gap-[2px]'>
-                <b className='font-title font-bold text-3xl'>ILEA</b>
-                <small>&#xae;</small>
-              </div>
-            </div>
+  const footerRef = useRef(null);
 
-            </div>
+  useEffect(() => {
+    gsap.fromTo(
+      footerRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
+    );
+  }, []);
+
+  return (
+    <footer ref={footerRef} className="bg-black text-gray-400 md:px-20 px-6 py-14">
+      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+        {/* Explore */}
+        <div>
+          <h3 className="font-semibold mb-4">Explore</h3>
+          <ul className="space-y-2">
+            {[
+              'Electric Bikes',
+              'Adult Bikes',
+              'Kids Bikes',
+              'Company Electric',
+              'Company Adult',
+              'Electric Insurance',
+              'Frame Size',
+              'Payment Options',
+            ].map((item) => (
+              <li key={item}>
+                <Link href="#" className="hover:underline">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* About */}
+        <div>
+          <h3 className="font-semibold mb-4">About</h3>
+          <ul className="space-y-2">
+            {['About Us', 'Join Us', 'Reviews', 'Journal'].map((item) => (
+              <li key={item}>
+                <Link href="#" className="hover:underline">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Help */}
+        <div>
+          <h3 className="font-semibold mb-4">Help</h3>
+          <ul className="space-y-2">
+            {[
+              'FAQ',
+              'Electric FAQ',
+              'Shipping',
+              'Returns',
+              'Warranty',
+              'Assembly',
+              'Contact Us',
+              'Privacy Policy',
+              'Terms and Conditions',
+            ].map((item) => (
+              <li key={item}>
+                <Link href="#" className="hover:underline">
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Social Icons */}
+          <div className="flex space-x-4 mt-4 text-xl">
+            <Link href="#"><FaLinkedinIn /></Link>
+            <Link href="#"><FaFacebookF /></Link>
+            <Link href="#"><FaTwitter /></Link>
+            <Link href="#"><FaInstagram /></Link>
           </div>
         </div>
-        <div className='col-span-3'>
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-       
-              <div>
-                <h2 className="text-gray-400 font-bold mb-4 tracking-widest">SHOPS</h2>
-                <ul className="space-y-2 font-mono">
-                  <li>NEW ARRIVAL</li>
-                  <li>MENS</li>
-                  <li>WOMENS</li>
-                  <li>WINTER</li>
-                </ul>
-              </div>
 
-              {/* Brand */}
-              <div>
-                <h2 className="text-gray-400 font-bold mb-4 tracking-widest">BRAND</h2>
-                <ul className="space-y-2 font-mono">
-                  <li>ABOUT</li>
-                  <li>CONTACT</li>
-                  <li>BLOG</li>
-                </ul>
-              </div>
+        {/* Contact */}
+        <div>
+          <h3 className="font-semibold mb-4">Contact Us:</h3>
+          <p>+31(0)20-2611433</p>
+          <Link href="#" className="underline">Customer Service Form</Link>
+          <p>Mon - Fri: 10:00am - 3:00pm</p>
+          <p>Email: info@veloretti.com</p>
 
-            
-      
-             </div>
+          <h3 className="font-semibold mt-6 mb-2">Store Hours:</h3>
+          <p>Mon - Fri: 9:30am - 6:00pm</p>
+          <p>Saturday: 10:00am - 5:30pm</p>
+          <p>Sunday: 12:00pm - 5:00pm</p>
         </div>
       </div>
-      
 
-      <div className="mt-20 flex flex-col md:flex-row justify-between items-center text-xs font-mono gap-4">
-        <p>© COPYRIGHT ROGUE 2025. ALL RIGHTS RESERVED.</p>
-        <div className="flex gap-6">
-          <a href="#">PRIVACY POLICY</a>
-          <a href="#">TERMS OF USE</a>
+      <div className="border-t border-gray-700 text-xs text-gray-500 py-6 px-4 text-center flex justify-between flex-col md:flex-row">
+        <p className="mb-2">
+          <span className="font-bold text-[#00F0FF]">3.8/5 ★</span> Trustpilot BASED ON 2,070 REVIEWS
+        </p>
+        <div className="flex justify-center items-center gap-4 text-lg">
+          <span>in3</span>
+          <span>K.</span>
+          <span>iDEAL</span>
+          <span>PayPal</span>
+          <span>Visa</span>
         </div>
       </div>
     </footer>
-    <div className=" bg-no-repeat h-[40vh] bg-fixed bg-c">
+  );
+};
 
-    </div>
-    
-    </>
-  )
-}
-
-export default Footer
+export default Footer;

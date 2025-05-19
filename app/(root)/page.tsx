@@ -3,8 +3,9 @@ import FeaturedDrop from "@/components/FeaturedDrop";
 import Hero from "@/components/Hero";
 import IdentityWall from "@/components/IdentityWall";
 import JoinTheMovement from "@/components/JoinTheMovement";
-import ShopByVibe from "@/components/ShopByVibe";
 import Image from "next/image";
+import ShopByVibe from "@/components/ShopByVibe";
+
 
 export default async function Home() {
 
@@ -13,12 +14,12 @@ export default async function Home() {
    <>
     <Hero/>
 
-    <section className="py-30 md:px-20 ">
-      <div className=" grid md:grid-cols-2 gap-10 place-items-center">
-        <div>
+    <section className="py-30 md:px-20 px-6">
+      <div className=" grid  gap-10 justify-center place-items-center">
+        <div className="max-w-[750px]">
         
          <AnimatedTitle2 text="Built to Stand Out.
-        Made to Be You." className="" />
+        Made to Be You." className=" xl:!text-9xl !text-7xl " />
 
         <p>
         We’re not here to tell you what fashion is, we’re here to help you tell your story.
@@ -29,10 +30,10 @@ export default async function Home() {
         </p>
         </div>
         <div className="flex items-center justify-center">
-          <div className="h-[500px] w-[400px] overflow-hidden rounded-[10px]">
+          {/* <div className="md:h-[500px] md:w-[400px] overflow-hidden rounded-[10px]">
           <Image src="/img/paparazzi photoshoot 2x9.jpg" width={500} height={500} alt="skdksjdjk" className="hue-rotate- w-full object-cover h-full"/>
 
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
@@ -42,7 +43,23 @@ export default async function Home() {
        
       </div>
 
-      <FeaturedDrop/>
+      <section className="grid md:grid-cols-2 grid-cols-1 md:px-20 md:pb-20 ">
+            <FeaturedDrop/>
+            <div>
+              <div className='bg-[#FD5E53] w-full md:block hidden md:h-[100vh] h-[70vh] rounded-br-[10px] rounded-tr-[10px] overflow-hidden'>
+                  <div className="h-full overflow-hidden">
+                    <Image
+                     src="https://i.pinimg.com/736x/40/9b/4d/409b4ddeb66441335d24458543443d9a.jpg"
+                     alt='product'
+                     width={900}
+                     height={900}
+                     className="h-full w-full object-cover object-top"
+                   />
+                  </div>
+                 </div>
+
+            </div>
+      </section>      
       {/* <div className="grid grid-cols-3 h-[500px] gap-1">
         <div className="bg-white"></div>
         <div className="bg-white"></div>
