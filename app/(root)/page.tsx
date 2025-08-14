@@ -5,7 +5,7 @@ import IdentityWall from "@/components/IdentityWall";
 import JoinTheMovement from "@/components/JoinTheMovement";
 import Image from "next/image";
 import ShopByVibe from "@/components/ShopByVibe";
-import Cursor from "@/components/Cursor";
+
 
 
 export default async function Home() {

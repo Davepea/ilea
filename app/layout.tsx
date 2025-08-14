@@ -7,7 +7,6 @@ import Navbar from "@/components/Navbar";
 import { auth } from "@/auth";
 import Footer from "@/components/Footer";
 import PreloaderWrapper from "@/components/PreloaderWrapper";
-import Cursor from "@/components/Cursor";
 
 export const metadata: Metadata = {
   title: "Ilea Real ones only.",
