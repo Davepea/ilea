@@ -57,6 +57,8 @@ export const PRODUCTS_QUERY = `*[_type == "product"] {
 
 
 
+
+
 export const PRODUCTS_BY_CATEGORY_QUERY = `*[_type == "product" && references(*[_type == "category" && slug.current == $slug]._id)] {
   _id,
   _createdAt,
@@ -72,5 +74,41 @@ export const PRODUCTS_BY_CATEGORY_QUERY = `*[_type == "product" && references(*[
     slug
   }
 }`;
+export const PRODUCTS_WITH_CATEGORY_QUERY = `*[_type == "product" && $slug in category[]->slug.current] | order(_createdAt desc) {
+      _id,
+        _createdAt,
+        name,
+        slug,
+        sku,
+        price,
+        discountPrice,
+        mainImage,
+        gallery[]{
+            asset->,
+            alt,
+            isDetailShot
+        },
+        sizes,
+        colors[]{
+            name,
+            hex,
+            swatchImage
+        },
+        inventory {
+            trackInventory,
+            backorder
+        },
+        category[]->{
+            _id,
+            title,
+            slug
+        },
+        tags,
+        description,
+        care,
+        isNew,
+        isBestseller,
+        isFeatured
+    }`;
 
 

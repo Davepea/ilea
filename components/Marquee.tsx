@@ -11,12 +11,12 @@ if (typeof window !== 'undefined') {
 
 // Words to display in the marquee
 const words = [
-  'Next.js',
-  'Tailwind CSS',
-  'GSAP',
-  'TypeScript',
-  'Infinite Marquee',
-  'Smooth Scroll',
+  'Rebellious',
+  'Unapologetic',
+  'Expressive',
+  'Raw',
+  'First',
+  'Authentic',
 ];
 
 // Create an extended array with more words for a longer sequence
@@ -70,15 +70,12 @@ export default function Marquee() {
     
     // Function to check if user is actively scrolling
     let scrollTimeout: NodeJS.Timeout;
-    let isScrolling = false;
     
     function handleScroll() {
-      isScrolling = true;
       autoScroll.pause(); // Pause auto-scroll during manual scrolling
       
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
-        isScrolling = false;
         
         // Get the current position and set it as the starting point for auto-scroll
         const currentX = gsap.getProperty(marquee, 'x') as number;

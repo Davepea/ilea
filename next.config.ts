@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
       'images.pexels.com',         // Pexels
       'img.freepik.com',           // Freepik
       'cdn.sanity.io',
+      'images.unsplash.com'
     ],
   },
 };

@@ -62,10 +62,14 @@ body {
   color: #e5f1f1;
 
 }
-h1,h2,h3,h4,h5,h6{
+h1,h2{
   font-family: var(--font-anton);
   text-transform: uppercase;
 
+}
+
+h1,h2,h3,h4,h5,h6{
+  font: 900;
 }
 
 
@@ -106,7 +110,7 @@ h1,h2,h3,h4,h5,h6{
   @apply bg-[#FD5E53] w-[0.15rem] ;
 }
 .floating-nav button{
-  @apply bg-[#4A4A4A] rounded-3xl;
+  @apply  rounded-3xl;
 }
 .floating-nav .music{
   @apply !bg-transparent ;
@@ -258,3 +262,8 @@ h1,h2,h3,h4,h5,h6{
 .price {
   @apply text-primary font-bold;
 }
+
+button{
+  @apply max-w-[300px] !h-[50px];
+}
+

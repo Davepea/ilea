@@ -28,17 +28,17 @@ const SignInPage = () => {
 
     <>
       <section className="grid md:grid-cols-2 sm:grid-cols-1 h-screen overflow-hidden md:grid-rows-1 sm:grid-rows-3">
-            <div className="h-full p-[10px] overflow-hidden relative md:block sm:row-span-1">
-              <div className="absolute right-[10px] left-[10px] bottom-[10px] top-[10px]">
+            <div className="h-full overflow-hidden relative md:block sm:row-span-1">
+              <div className="absolute w-full right-[0px] left-[0px] bottom-[0px] top-[0px] ">
               <Image
                 src="/img/download (7).jpg"
                 height={1000}
                 width={1000}
                 alt="sign-up image"
-                className="h-full object-cover object-top rounded-sm"
+                className="h-full object-cover object-top "
                 />
               </div>
-              <div className="relative">
+              {/* <div className="relative">
                 <div className="flex justify-between py-3 px-4">
                   <div>
                     <div className='flex items-center gap-7'>
@@ -63,7 +63,7 @@ const SignInPage = () => {
                   </div>
                 </div>
       
-              </div>
+              </div> */}
       
       
             </div>

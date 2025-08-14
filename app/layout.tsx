@@ -1,12 +1,13 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import { newTitle, pencerio, dancingScript, anton, author } from "./fonts";
 import AnimatedLayout from "@/components/AnimatedLayout";
-import Footer from "@/components/Footer";
 import { CartProvider } from "@/components/CartSystem";
 import Navbar from "@/components/Navbar";
 import { auth } from "@/auth";
+import Footer from "@/components/Footer";
+import PreloaderWrapper from "@/components/PreloaderWrapper";
+import Cursor from "@/components/Cursor";
 
 export const metadata: Metadata = {
   title: "Ilea Real ones only.",
@@ -18,22 +19,27 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   const session = await auth();
 
   return (
     <html lang="en">
       <CartProvider>
-         <body
-        className={`${author.variable} ${newTitle.variable} ${pencerio.variable} ${dancingScript.variable} ${anton.variable} antialiased`}
-      >
-        <Navbar session={session} />  
-          <AnimatedLayout>{children}</AnimatedLayout>
-             <Footer/>
-      </body>
+        <body
+          className={`${author.variable} ${newTitle.variable} ${pencerio.variable} ${dancingScript.variable} ${anton.variable} antialiased`}
+        >
+          
+        <PreloaderWrapper>
+        
 
+           <Navbar session={session} />
+          <AnimatedLayout>{children}</AnimatedLayout>
+        <Footer/>
+        </PreloaderWrapper>
+
+        </body>
+        
       </CartProvider>
-     
+
     </html>
   );
 }

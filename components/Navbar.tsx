@@ -1,13 +1,16 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import Button from '@/components/Button'
 import Link from 'next/link'
 import { useWindowScroll } from 'react-use'
 import gsap from 'gsap'
 import Image from 'next/image'
-import { BiCart } from 'react-icons/bi'
+import { BiCart, BiUser } from 'react-icons/bi'
 import { useCart, CartPopup, CartAlert } from './CartSystem'
+import { usePathname } from 'next/navigation'
+// Import ChevronDown icon
+import { ChevronDown } from 'lucide-react'
+import Categories from './Categories'
 
 type UserSession = {
   id?: string
@@ -22,17 +25,22 @@ type NavbarProps = {
   session: UserSession | null
 }
 
-const navItems = ['Shop', 'About', 'Community', 'Collection']
+// Update navItems - remove 'Shop' since we'll handle it separately
+const navItems = ['About', 'Community', 'Collection']
 
-const Navbar = ({ session }: NavbarProps) => {
+const Navbar = ({ session}: NavbarProps) => {
   const [isNavVisible, setIsNavVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isAudioPlaying, setIsAudioPlaying] = useState(false)
   const [isIndicatorActive, setIsIndicatorActive] = useState(false)
+  // Add dropdown state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const navContainerRef = useRef<HTMLDivElement | null>(null)
   const audioElementRef = useRef<HTMLAudioElement | null>(null)
   const cartButtonRef = useRef<HTMLButtonElement | null>(null)
+  // Add dropdown ref for click outside detection
+  const dropdownRef = useRef<HTMLDivElement | null>(null)
 
   const { y: currentScrollY } = useWindowScroll()
   const { toggleCart, cartCount } = useCart() // Access cart context
@@ -63,6 +71,25 @@ const Navbar = ({ session }: NavbarProps) => {
       duration: 0.2,
     })
   }, [isNavVisible])
+
+  // Toggle dropdown
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   const toggleAudioIndicator = () => {
     setIsAudioPlaying((prev) => !prev)
@@ -103,17 +130,27 @@ const Navbar = ({ session }: NavbarProps) => {
     window.location.href = '/'
   }
 
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/studio")) {
+    return null; 
+  }
+  if (pathname.startsWith("/community")) {
+    return null; 
+  }
+
   return (
     <>
       <div
         ref={navContainerRef}
-        className='fixed inset-x-0 top-4 z-50 h-12 border-none transition-all duration-700 sm:inset-x-6 text-white'
+        className='!fixed inset-x-0 top-4 z-50 h-12 border-none transition-all duration-700 sm:inset-x-6 text-white'
       >
         <header className='absolute top-1/2 w-full -translate-y-1/2'>
           <nav className='flex size-full items-center justify-between p-4'>
             {/* Logo Section */}
             <div className='flex items-center gap-7'>
-              <div className='flex gap-[2px] items-center'>
+              <Link href='/'>
+                    <div className='flex gap-[2px] items-center'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 24 24'
@@ -127,14 +164,46 @@ const Navbar = ({ session }: NavbarProps) => {
                   <small>&#xae;</small>
                 </div>
               </div>
+              </Link>
             </div>
 
             {/* Nav Items */}
             <div className='hidden md:block'>
+              {/* Shop dropdown menu */}
+              <div className=" inline-block" ref={dropdownRef}>
+                <button 
+                  onClick={toggleDropdown}
+                  className="nav-hover-btn flex items-center"
+                  aria-expanded={isDropdownOpen}
+                  aria-haspopup="true"
+                >
+                  Shop
+                  <ChevronDown size={16} className={`ml-1 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {isDropdownOpen && (
+                  <div className="absolute z-10 mt-6 right-0 left-0  bg-[#3e3e3e] backdrop-blur-lg shadow-lg overflow-y-scroll">
+                    <div className="p-[1px] grid md:grid-cols-5 grid-cols-1 ">
+                      <Link 
+                        href="/product" 
+                        className="bg-[#202124] text-sm  font-medium px-4 py-4  hover:bg-gray-200 hover:text-[#FD5E53] transition "
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        All Products
+                      </Link>
+                      
+                      {/* Map through categories */}
+                     <Categories setIsDropdownOpen={setIsDropdownOpen} />
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Other nav items */}
               {navItems.map((item) => (
                 <Link
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`${item.toLowerCase()}`}
                   className='nav-hover-btn'
                 >
                   {item}
@@ -143,7 +212,7 @@ const Navbar = ({ session }: NavbarProps) => {
             </div>
 
             {/* Right Side */}
-            <div className='flex h-full items-center gap-3'>
+            <div className='flex h-full items-center gap-1'>
               <div className='ml-10 flex gap-4 items-center'>
                 {session?.user ? (
                   <>
@@ -169,16 +238,12 @@ const Navbar = ({ session }: NavbarProps) => {
                   </>
                 ) : (
                   <>
-                    <Link href='#' className='nav-hover-btn'>
-                      Log in
+                    <Link href='/sign-in' className='nav-hover-btn'>
+                      <p>
+                        <BiUser size={22}/>
+                      </p>
                     </Link>
-                    <Button
-                        id='product-button'
-                        title='Sign Up'
-                        containerClass='bg-white/10 backdrop-blur-md flex gap-3 text-white md:flex items-center justify-center gap-1'
-                        rightIcon={undefined}
-                        leftIcon={undefined}
-                    />
+                  
                   </>
                 )}
                 

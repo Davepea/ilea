@@ -47,8 +47,8 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
 
   return (
     <div>
-      <Link 
-        href={`/product/${product.slug?.current || '#'}`} 
+      <div
+        // href={`/product/${product.slug?.current || '#'}`} 
         className={`group block overflow-hidden border-gray-200 transition-all ${className}`}
       >
         {/* Image with hover effect and status badges */}
@@ -117,7 +117,7 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
             </button>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   )
 }

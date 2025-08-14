@@ -1,11 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const NewsLetter = () => {
   return (
     <>
         <section className=''>
-       <div className='grid md:grid-cols-2 grid-cols-1 md:h-screen  bg-[#101010]'>
+       <div className='grid md:grid-cols-2 grid-cols-1 md:h-[700px]  bg-[#101010]'>
         <div className='col-span-1 bg-[#FD5E53]  p-10 md:px-20 flex flex-col gap-14 py-20 justify-between relative'>
           <div className=' absolute top-0 bottom-0 right-0 left-0'>
             <Image
@@ -21,12 +22,12 @@ const NewsLetter = () => {
                   This isn’t just fashion—it’s identity. Join the ones who wear their truth like armor.
                 </p>
                 <div className=" mt-10  ">
-                  <a
+                  <Link
                     href="/start"
                     className="px-6 py-3 text-white bg-[#FD5E53] rounded-full hover:bg-gray-800 transition"
                   >
                     Start Expressing →
-                  </a>
+                  </Link>
                 
                 </div>
           </div>
