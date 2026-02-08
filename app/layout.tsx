@@ -28,7 +28,6 @@ export default async function RootLayout({
         <body
           className={`${author.variable} ${newTitle.variable} ${pencerio.variable} ${dancingScript.variable} ${anton.variable} antialiased`}
         >
-          
         {/* <PreloaderWrapper> */}
         
 
