@@ -29,7 +29,7 @@ export default async function RootLayout({
           className={`${author.variable} ${newTitle.variable} ${pencerio.variable} ${dancingScript.variable} ${anton.variable} antialiased`}
         >
         {/* <PreloaderWrapper> */}
-           <Navbar session={session} />
+           <Navbar session={session}/>
           <AnimatedLayout>{children}</AnimatedLayout>
         <Footer/>
         {/* </PreloaderWrapper> */}
