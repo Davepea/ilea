@@ -21,7 +21,9 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en">
+    <html lang="en"
+    data-qb-installed="true"
+    >
       <CartProvider>
         <body
           className={`${author.variable} ${newTitle.variable} ${pencerio.variable} ${dancingScript.variable} ${anton.variable} antialiased`}
